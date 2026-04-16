@@ -22,7 +22,6 @@ function Learn({ topic, goHome }) {
     <div style={s.container}>
       {/* HEADER */}
       <div style={s.header}>
-        {/* ✅ PROFESSIONAL BACK BUTTON */}
         <button
           style={s.backBtn}
           onClick={goHome}
@@ -33,6 +32,12 @@ function Learn({ topic, goHome }) {
           onMouseLeave={(e) => {
             e.currentTarget.style.background = "#1f2937";
             e.currentTarget.style.border = "1px solid #374151";
+          }}
+          onMouseDown={(e) => {
+            e.currentTarget.style.transform = "scale(0.95)";
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
           }}
         >
           ← Back
@@ -59,10 +64,34 @@ function Learn({ topic, goHome }) {
                   return (
                     <div
                       key={idx}
-                      style={s.headingBlock}
+                      style={{
+                        ...s.headingBlock,
+                        background:
+                          openKey === key ? "#1e3a8a" : "transparent",
+                      }}
                       onClick={() => toggle(key)}
+                      onMouseEnter={(e) => {
+                        if (openKey !== key)
+                          e.currentTarget.style.background = "#111827";
+                      }}
+                      onMouseLeave={(e) => {
+                        if (openKey !== key)
+                          e.currentTarget.style.background = "transparent";
+                      }}
+                      onMouseDown={(e) => {
+                        e.currentTarget.style.transform = "scale(0.98)";
+                      }}
+                      onMouseUp={(e) => {
+                        e.currentTarget.style.transform = "scale(1)";
+                      }}
                     >
-                      <h3 style={s.subHeading}>
+                      <h3
+                        style={{
+                          ...s.subHeading,
+                          color:
+                            openKey === key ? "#60a5fa" : "#e2e8f0",
+                        }}
+                      >
                         {block.value}
                         <span style={s.arrow}>
                           {openKey === key ? "−" : "+"}
@@ -135,7 +164,6 @@ const s = {
     zIndex: 10,
   },
 
-  /* ✅ NEW PROFESSIONAL BUTTON */
   backBtn: {
     display: "flex",
     alignItems: "center",
@@ -174,9 +202,11 @@ const s = {
   },
 
   headingBlock: {
-    padding: "16px 0",
+    padding: "16px",
     borderBottom: "1px solid #1f2937",
+    borderRadius: "8px",
     cursor: "pointer",
+    transition: "all 0.2s ease",
   },
 
   subHeading: {

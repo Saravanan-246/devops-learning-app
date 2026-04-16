@@ -39,14 +39,22 @@ function Home({ goToLearn }) {
               onClick={() => goToLearn(t.id)}
               onMouseEnter={() => setHovered(t.id)}
               onMouseLeave={() => setHovered(null)}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = "scale(0.97)";
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+              }}
               style={{
                 ...s.card,
                 borderColor: isHover ? "#3b82f6" : "#1f2937",
                 background: isHover ? "#111827" : "#0f172a",
-                transform: isHover ? "translateY(-2px)" : "translateY(0)",
+                transform: isHover
+                  ? "translateY(-4px)"
+                  : "translateY(0)",
                 boxShadow: isHover
-                  ? "0 10px 30px rgba(0,0,0,0.4)"
-                  : "none",
+                  ? "0 12px 40px rgba(37, 99, 235, 0.25)"
+                  : "0 4px 20px rgba(0,0,0,0.3)",
               }}
             >
               <span style={s.tag}>{t.tag}</span>
@@ -56,7 +64,12 @@ function Home({ goToLearn }) {
               <p style={s.desc}>{t.desc}</p>
 
               <div style={s.footer}>
-                <span style={s.cta}>
+                <span
+                  style={{
+                    ...s.cta,
+                    color: isHover ? "#60a5fa" : "#e5e7eb",
+                  }}
+                >
                   Start Module →
                 </span>
               </div>
@@ -68,7 +81,7 @@ function Home({ goToLearn }) {
   );
 }
 
-/* ================= PROFESSIONAL STYLES ================= */
+/* ================= FINAL STYLES ================= */
 
 const s = {
   container: {
@@ -113,7 +126,7 @@ const s = {
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-    gap: "16px",
+    gap: "18px",
     maxWidth: "1000px",
     margin: "0 auto",
   },
@@ -121,10 +134,10 @@ const s = {
   card: {
     background: "#0f172a",
     border: "1px solid #1f2937",
-    borderRadius: "14px",
+    borderRadius: "16px",
     padding: "24px",
     cursor: "pointer",
-    transition: "all 0.2s ease",
+    transition: "all 0.25s ease",
     display: "flex",
     flexDirection: "column",
   },
@@ -160,7 +173,7 @@ const s = {
   cta: {
     fontSize: "13px",
     fontWeight: "600",
-    color: "#e5e7eb",
+    transition: "color 0.2s ease",
   },
 };
 

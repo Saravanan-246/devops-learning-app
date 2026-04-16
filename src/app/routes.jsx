@@ -2,8 +2,9 @@ import Home from "../features/home/Home";
 import Learn from "../features/learn/Learn";
 
 function Routes({ page, setPage, topic, setTopic }) {
-  
+
   const goToLearn = (selectedTopic) => {
+    if (!selectedTopic) return; // safety
     setTopic(selectedTopic);
     setPage("learn");
   };
@@ -13,11 +14,14 @@ function Routes({ page, setPage, topic, setTopic }) {
     setTopic(null);
   };
 
-  if (page === "learn") {
-    return <Learn topic={topic} goHome={goHome} />;
-  }
+  switch (page) {
+    case "learn":
+      return <Learn topic={topic} goHome={goHome} />;
 
-  return <Home goToLearn={goToLearn} />;
+    case "home":
+    default:
+      return <Home goToLearn={goToLearn} />;
+  }
 }
 
 export default Routes;

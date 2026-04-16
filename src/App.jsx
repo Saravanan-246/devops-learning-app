@@ -6,12 +6,14 @@ function App() {
   const [topic, setTopic] = useState(null);
 
   return (
-    <Routes
-      page={page}
-      setPage={setPage}
-      topic={topic}
-      setTopic={setTopic}
-    />
+    <div className="app">
+      <Routes
+        page={page}
+        setPage={setPage}
+        topic={topic}
+        setTopic={setTopic}
+      />
+    </div>
   );
 }
 
