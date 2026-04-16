@@ -29,24 +29,32 @@ html, body, #root {
   align-items: center;
 }
 
-/* BUTTON BASE */
+/* ================= BUTTON ================= */
 button {
   border: none;
   outline: none;
   cursor: pointer;
   padding: 12px 16px;
   border-radius: 10px;
-  background: #2563eb;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: #fff;
   font-weight: 500;
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
 }
 
+/* Hover */
 button:hover {
-  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
 }
 
-/* CARD BASE */
+/* Click feel */
+button:active {
+  transform: scale(0.96);
+  box-shadow: none;
+}
+
+/* ================= CARD ================= */
 .card {
   width: 90%;
   max-width: 500px;
@@ -54,9 +62,111 @@ button:hover {
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  transition: all 0.25s ease;
+}
+
+/* Slight hover lift */
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* ================= HEADER (NEW) ================= */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #1f2937;
+  position: sticky;
+  top: 0;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+/* Back button professional */
+.back-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  font-size: 14px;
+}
+
+/* ================= CONTENT ================= */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* ================= TITLES ================= */
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.sub-heading {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Active state */
+.sub-heading.active {
+  color: #60a5fa;
+}
+
+/* ================= ACCORDION ================= */
+.heading {
+  padding: 16px;
+  border-bottom: 1px solid #1f2937;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hover */
+.heading:hover {
+  background: #1e293b;
+}
+
+/* Active */
+.heading.active {
+  background: #1e3a8a;
+}
+
+/* ================= CONTENT BLOCK ================= */
+.content-block {
+  padding: 12px 0 18px 0;
 }
 
 /* TEXT */
+.text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #cbd5f5;
+}
+
+/* LIST */
+.list {
+  padding-left: 18px;
+  line-height: 1.8;
+  color: #cbd5f5;
+}
+
+/* CODE BOX */
+.code-box {
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+}
+
+/* ================= TEXT ================= */
 h1 {
   font-size: 24px;
   font-weight: 600;
@@ -64,6 +174,6 @@ h1 {
 
 p {
   font-size: 14px;
-  opacity: 0.8;
-  line-height: 1.5;
+  opacity: 0.85;
+  line-height: 1.6;
 }
